@@ -60,5 +60,11 @@ namespace Utils {
         return oss.str();
     }
 }
+static std::string generate_commit_id(){
+    return generate_alphanumeric(40);
+   } m
+   static void log(const std::string& message){
+    std::cout << "[MiniGit]" << " " << message  << std::endl;
+   }
 
 #endif 
