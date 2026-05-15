@@ -77,14 +77,21 @@ MiniGit help
 2. **Committing Changes**:
    - Generates a unique commit ID.
    - Saves a snapshot of the current files.
+   - Version Safety: MiniGit uses a linked history. When you add a new file or make a change, the old files remain in 
+   the .mgit folder. Previous commits are never deleted or overwritten, allowing for a full timeline of your project.
    - Stores commit metadata (message, author, timestamp) in the database.
+   
 
 3. **Viewing Logs**:
    - Retrieves commit history from the database and displays it in a readable format.
 
 4. **Restoring Files**:
    - Restores the file structure and contents from a specific commit.
-
+5. **Data Integrity Note**:
+    -MiniGit uses a "Copy-on-Write" logic. When a commit is made, the FileSystem component creates a physical binary copy of your project files. This ensures that even if you delete your original files by accident, the .mgit backup remains untouched and ready for restoration.   
+6.Error Handling
+    -Missing Messages: If a commit is attempted without the -m flag, MiniGit will block the action to ensure every save has a description.
+    -Invalid IDs: The restore command validates the 8-character ID before attempting to move files, preventing corruption of the working directory.
 ## Project Structure
 
 - **`include/`**: Contains header files for various components (e.g., CLI, CommitHandler, FileSystem, Utils).
