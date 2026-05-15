@@ -89,8 +89,9 @@ MiniGit help
    - Restores the file structure and contents from a specific commit.
 5. **Data Integrity Note**:
     -MiniGit uses a "Copy-on-Write" logic. When a commit is made, the FileSystem component creates a physical binary copy of your project files. This ensures that even if you delete your original files by accident, the .mgit backup remains untouched and ready for restoration.   
-6.Error Handling
+6.**Error Handling**
     -Missing Messages: If a commit is attempted without the -m flag, MiniGit will block the action to ensure every save has a description.
+    
     -Invalid IDs: The restore command validates the 8-character ID before attempting to move files, preventing corruption of the working directory.
 ## Project Structure
 
